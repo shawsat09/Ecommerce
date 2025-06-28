@@ -61,5 +61,8 @@ Backend volume is mounted: changes to code are reflected live (if using runserve
 
 For frontend, you must rebuild (--build) if your Dockerfile uses a static npm run build (as in Nginx setup)
 
+### POSTMAN API Link
+https://winter-sunset-629160.postman.co/workspace/Satish~13d9b3a3-5955-4b9b-8c98-c74b61e4c258/collection/17833650-8131d8f6-e8ee-4007-8446-c7f9864a9336?action=share&source=copy-link&creator=17833650
+
 
 
