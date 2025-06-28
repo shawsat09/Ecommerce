@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 7007
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./Ecommerce_BE
+    container_name: backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgres:7007@db:5432/ecommerce
+    volumes:
+      - ./Ecommerce_BE:/app  # Optional for hot reload if using runserver with reload
+
+  frontend:
+    build:
+      context: ./Ecomm_FE
+      dockerfile: Dockerfile  # or omit if it's named "Dockerfile"
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
